@@ -1,1 +1,1 @@
-I my me mine 
+Schoolchildren's kanji data
