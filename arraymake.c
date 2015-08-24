@@ -9,10 +9,8 @@
 #define Moji 240 //文字ファイルの数
 
 int main(void){
-
    //出力用
    int array[Moji][Cell]={0};
-
    //使用するファイル名
    char num[Moji][10] = {{"19968.txt"},{"21491.txt"},{"38632.txt"},{"20870.txt"},{"29579.txt"},{"38899.txt"},
                          {"19979.txt"},{"28779.txt"},{"33457.txt"},{"35997.txt"},{"23398.txt"},{"27671.txt"},
@@ -54,41 +52,26 @@ int main(void){
                          {"26041.txt"},{"21271.txt"},{"27598.txt"},{"22969.txt"},{"19975.txt"},{"26126.txt"},
                          {"40180.txt"},{"27611.txt"},{"38272.txt"},{"22812.txt"},{"37326.txt"},{"21451.txt"},
                          {"29992.txt"},{"26332.txt"},{"26469.txt"},{"37324.txt"},{"29702.txt"},{"35441.txt"}};
-   
    //文字ファイルの数だけ
-   for(int j=0; j < Moji; j++){
-	   
+    for(int j=0; j < Moji; j++){
       FILE *fp;
-	   
       //ファイルを開く
-	   if((fp=fopen(num[j],"r")) != NULL){
-         
+	    if((fp=fopen(num[j],"r")) != NULL){
          //文字列を一文字ずつ取得するためのchar配列
          char load[Cell];
-   		int i = 0;
-
-   		//ファイルが終わる(End Of File)まで読み込む
-   		while(fscanf(fp,"%c",&load[i]) != EOF ){
-            
-            //load[i]にはいるのは0か1の文字コードなので48のとき0
-   			if(load[i] == 48){ array[j][i] = 0; }
-   			else{ array[j][i] = 1; }
-            
-            printf("%d",array[j][i]);
-   			
-            i++;
-
+   		  int i = 0;
+        //ファイルが終わる(End Of File)まで読み込む
+   		  while(fscanf(fp,"%c",&load[i]) != EOF ){  
+          //load[i]にはいるのは0か1の文字コードなので48のとき0
+   			  if(load[i] == 48){ array[j][i] = 0; }
+   			  else{ array[j][i] = 1; }
+          //printf("%d",array[j][i]);
+   			  i++;
    		}
-
-         printf("\n");
- 		   fclose(fp);
-	   
+      //printf("\n");
+ 		  fclose(fp);
       }
-
    }
-
    //ここ以降で文字データ(array)を扱う感じ
-
    return 0;
-
 }
