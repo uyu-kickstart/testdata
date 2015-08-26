@@ -55,24 +55,24 @@ int main(void){
     
     //文字ファイルの数だけ
     for(int j=0; j < Moji; j++){
-      FILE *fp;
-      //ファイルを開く
+        FILE *fp;
+        //ファイルを開く
 	    if((fp=fopen(num[j],"r")) != NULL){
-        //文字列を一文字ずつ取得するためのchar配列
-        char load[Cell];
-   		  int i = 0;
-        //ファイルが終わる(End Of File)まで読み込む
-   		  while(fscanf(fp,"%c",&load[i]) != EOF ){  
-          //load[i]にはいるのは0か1の文字コードなので48のとき0
-   			  if(load[i] == 48){ array[j][i] = 0; }
-   			  else{ array[j][i] = 1; }
-          //printf("%d",array[j][i]);
-   			  i++;
-   		  }
-        //printf("\n");
+            //文字列を一文字ずつ取得するためのchar配列
+            char load[Cell];
+            int i = 0;
+            //ファイルが終わる(End Of File)まで読み込む
+            while(fscanf(fp,"%c",&load[i]) != EOF ){
+                //load[i]にはいるのは0か1の文字コードなので48のとき0
+                if(load[i] == 48){ array[j][i] = 0; }
+                else{ array[j][i] = 1; }
+                //printf("%d",array[j][i]);
+                i++;
+            }
+            //printf("\n");
  		    fclose(fp);
-      }
+        }
     }
-   //ここ以降で文字データ(array)を扱う感じ
-   return 0;
+    //ここ以降で文字データ(array)を扱う感じ
+    return 0;
 }
